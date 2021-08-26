@@ -1,0 +1,137 @@
+.tasks{
+    padding-top: 140px;
+}
+.username{
+    color: #202020;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.tasks .title{
+    
+   
+    font-size: 35px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-align: center;
+    font-variant:initial;
+    font-weight: 700;
+}
+
+
+
+.gridTasks{
+    max-width: 345px;
+    margin: 10px auto 10px auto;
+    border-radius: 7px ;
+    background:#e0e5ec !important;
+    
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+
+
+
+
+
+#slow-transition {
+    box-shadow:  -8px -8px 12px rgba(255, 255, 255,1),8px 8px 12px rgba(163, 177, 198,1) ;
+    transition: box-shadow 500ms;
+  }
+  
+  #slow-transition:hover {
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.603),28px 28px 28px rgba(163, 177, 198,1) ;
+  }
+
+
+
+
+
+.cardTitle{
+    font-weight: 500 !important;
+    color:#ff8800;
+}
+
+.cardBtn{
+    outline:none;
+    background: none ;
+    border: none;
+    cursor:pointer;
+}
+
+
+.form{
+    border-radius: 7px ;
+    
+    padding: 15px;
+    box-shadow:  -8px -8px 12px #ffffffdc, 8px 8px 12px #a3b1c6;
+}
+
+.form form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.gridForm{
+    margin: auto !important;
+}
+
+.form form input {
+    width: 90%;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 7px;
+    background: #959faf00;
+    border-radius: 5px 5px 0 0;
+    border: none;
+    border-bottom: 2px solid #ff8800;
+    outline: none;
+}
+
+
+
+.form form button{
+    margin-top:15px;
+    outline: none;
+    border: none;
+    padding: 10px 15px 10px 15px;
+    font-weight: 600;
+    font-size:18px;
+    background: #ff8800;
+    border-radius: 5px ;
+}
+
+
+.notLogged{
+    
+    text-align: center;
+    
+   
+    flex-direction: column;
+}
+
+.notLogged p{
+    font-size:25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    
+}
+
+.notLogged  .notLogged-btn{
+    width: 50%;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    font-weight: 700;
+    border: 2px solid #ff8800;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    background: #ff88006c;
+    color: #202020;
+    padding: 10px;
+    
+}
