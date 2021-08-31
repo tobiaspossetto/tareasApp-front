@@ -38,7 +38,7 @@ const SignIn = () => {
                     }
                   })}
                 ></input>
-                  <span >{errors.username && errors.username.message}</span>
+                  <span  className='mensajeError'>{errors.username && errors.username.message}</span>
                 <input placeholder='Contraseña' name='password' className='form-input' type="password"
                   {...register('password', {
                     required: {
@@ -49,7 +49,7 @@ const SignIn = () => {
                 ></input>
                 
                 
-                <span >{errors.password && errors.password.message}</span>
+                <span className='mensajeError' >{errors.password && errors.password.message}</span>
                 {signInError !== null && <span>{signInError}</span>}
                 <button type="submit" className='form-btn'>Ingresar</button>
                

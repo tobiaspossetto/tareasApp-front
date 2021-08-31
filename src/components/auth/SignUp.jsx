@@ -74,7 +74,7 @@ const SignUp = () => {
                     }
                   })}
                 ></input>
-                <span >{errors.username && errors.username.message}</span>
+                <span  className='mensajeError'>{errors.username && errors.username.message}</span>
                 <input placeholder='Correo' name='email' className='form-input' type="email"
                  {...register('email', {
                     required: {
@@ -88,11 +88,11 @@ const SignUp = () => {
                   })}
                 
                 ></input>
-                <span >{errors.email && errors.email.message}</span>
+                <span  className='mensajeError'>{errors.email && errors.email.message}</span>
                 <input placeholder='Contraseña'onChange={handleInputChange} name='password' className='form-input' type="password"
                
                 ></input>
-                 <span >{errors.password && errors.password.message}</span>
+                 <span  className='mensajeError'>{errors.password && errors.password.message}</span>
                 <input placeholder='Confirmar Contraseña'onChange={handleInputChange} name='passwordConfirm'  className='form-input' type="password"></input>
                 
                 {passwordDiferents&&<span>La contraseña es menor a 6 caracteres o las contraseñas no coinciden</span>}

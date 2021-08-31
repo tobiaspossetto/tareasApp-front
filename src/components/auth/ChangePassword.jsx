@@ -70,14 +70,14 @@ const ChangePassword = () => {
                         }
                     })}
                 ></input>
-                <span >{errors.oldPassword && errors.oldPassword.message}</span>
+                <span  className='mensajeError'>{errors.oldPassword && errors.oldPassword.message}</span>
                 <input onChange={handleInputChange} placeholder='Contraseña nueva' name='newPassword' className='form-input' type="password"></input>
-                <input onChange={handleInputChange} placeholder='Confirmar contraseña nueva' name='confirmNewPassword' className='form-input' type="password"></input>
+                <input  onChange={handleInputChange} placeholder='Confirmar contraseña nueva' name='confirmNewPassword' className='form-input' type="password"></input>
 
 
 
-                {passwordDiferents && <span>La nueva contraseña es menor a 6 caracteres o las contraseñas no coinciden</span>}
-                {changePasswordError !== null && <span>{changePasswordError}</span>}
+                {passwordDiferents && <span  className='mensajeError'>La nueva contraseña es menor a 6 caracteres o las contraseñas no coinciden</span>}
+                {changePasswordError !== null && <span  className='mensajeError'>{changePasswordError}</span>}
                 <button type="submit" className='form-btn'>Enviar</button>
             </form>
         </Container>

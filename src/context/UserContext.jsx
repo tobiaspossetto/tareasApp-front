@@ -18,7 +18,10 @@ export function UserProvider(props) {
     const [signInError, setSignInError] = useState(null);
     const [changePasswordError, setChangePasswordError] = useState(null)
 
+    //task States
+    const [createError, setCreateError] = useState(false);
     useEffect(() => {
+       
         const user = cookies.get('username')
         if (user) {
             setUserData({ id: cookies.get('id'), username: cookies.get('username'), email: cookies.get('email'), token: cookies.get('token') })
@@ -28,10 +31,10 @@ export function UserProvider(props) {
 
     const createCookie = (data) => {
         
-        cookies.set('id', data.id, { maxAge: 20 }, { path: '/' });
-        cookies.set('username', data.username, { maxAge: 20 }, { path: '/' });
-        cookies.set('email', data.email, { maxAge: 20 }, { path: '/' });
-        cookies.set('token', data.token, { maxAge: 20 }, { path: '/' });
+        cookies.set('id', data.id, { maxAge: 7200 }, { path: '/' });
+        cookies.set('username', data.username, { maxAge: 7200 }, { path: '/' });
+        cookies.set('email', data.email, { maxAge: 7200 }, { path: '/' });
+        cookies.set('token', data.token, { maxAge: 7200 }, { path: '/' });
         setUserData(data)
         setIsLogged(true)
     }
@@ -64,13 +67,19 @@ export function UserProvider(props) {
     }
 
 
-    const logOut = () => {
-        setIsLogged(false)
-        setUserData({})
-        cookies.set('id', null, { maxAge: 1 }, { path: '/' });
-        cookies.set('username',null, { maxAge: 1 }, { path: '/' });
-        cookies.set('email', null, { maxAge: 1 }, { path: '/' });
-        cookies.set('token', null, { maxAge: 1 }, { path: '/' });
+    const logOut = async() => {
+       
+
+            setIsLogged(false)
+            setUserData({})
+             cookies.set('id', null, { maxAge: 1 }, { path: '/' });
+             cookies.set('username',null, { maxAge: 1 }, { path: '/' });
+             cookies.set('email', null, { maxAge: 1 }, { path: '/' });
+             cookies.set('token', null, { maxAge: 1 }, { path: '/' });
+      
+
+      
+       
     }
 
     const changePassword = (userDataChangePassword) => {
@@ -88,6 +97,33 @@ export function UserProvider(props) {
     }
 
 
+    //Tasks
+    const sesionTime = () => {
+        const token = cookies.get('token')
+
+        if(!token){
+           
+            logOut()
+            
+        }
+    }
+    const newTask = async (task) => {
+        sesionTime()
+        setCreateError(false)
+        Axios({
+            method: 'POST',
+            url: 'http://localhost:4000/task/',
+            data: task,
+            headers: {'authorization':cookies.get('token')}
+        })
+        .then(response => {
+           console.log(response.data)
+           
+        })
+        .catch(err => { setCreateError(true) })
+        
+    }
+
     return <UserContext.Provider value={{
         isLogged,
         userData,
@@ -101,7 +137,9 @@ export function UserProvider(props) {
         setSignInError,
         changePasswordError,
         changePassword,
-        setChangePasswordError
+        setChangePasswordError,
+        newTask,
+        createError
 
     }} {...props} />
 }

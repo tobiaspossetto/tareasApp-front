@@ -136,3 +136,9 @@
     padding: 10px;
     
 }
+.mensajeError{
+    color:brown;
+    font-weight: 600;
+    text-align: center;
+}
+
