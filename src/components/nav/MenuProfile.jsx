@@ -17,7 +17,9 @@ export default function SimpleMenu() {
         setAnchorEl(null);
     };
 
-    const {isLogged} = useUser();
+    const {isLogged,logOut} = useUser();
+
+   
     return (
         <div>
             
@@ -36,7 +38,8 @@ export default function SimpleMenu() {
                 {
                     isLogged ? <>
                         
-                        <btn className="linkMenuProfile" onClick={handleClose} >Salir</btn>
+                        <btn className="linkMenuProfile" onClick={handleClose, logOut} >Salir</btn>
+                        <Link className="linkMenuProfile" to='/change-password' onClick={handleClose}>Cambiar contraseña</Link>
                     </> : <><Link className="linkMenuProfile" to='/sign-up' onClick={handleClose}>Crear Cuenta</Link>
                     <Link className="linkMenuProfile" to='/sign-in' onClick={handleClose}>Ingresar</Link>
                     </>

@@ -78,12 +78,13 @@
     margin: auto !important;
 }
 
-.form form input {
+.form form input,
+.form form textarea {
     width: 90%;
     padding: 10px;
     font-size: 18px;
     margin-bottom: 7px;
-    background: #959faf00;
+    background:#e0e5ec;
     border-radius: 5px 5px 0 0;
     border: none;
     border-bottom: 2px solid #ff8800;

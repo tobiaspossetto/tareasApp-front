@@ -6,8 +6,9 @@ const Form = () => {
               
             <form >
 
-                <input placeholder='Titulo'  type='text' className='form-input'/>
-                <input  placeholder='Descripción' type='text' className='form-input'/>
+                <input placeholder='Titulo'  type='text' />
+              
+                <textarea rows="1" cols="50"  placeholder='Descripción'/>
                 <button >Crear</button>
             </form>
         </div>
