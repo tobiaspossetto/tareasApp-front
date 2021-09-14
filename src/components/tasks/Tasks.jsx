@@ -1,16 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext,useState } from 'react';
 import Task from './Task'
 import Form from './form/Form';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import { useUser } from '../../context/UserContext'
 import { Container } from '@material-ui/core';
+import { GlobalContext } from '../../context/GlobalContext'
 import './task.css'
-
 
 const Tasks = () => {
     const { isLogged, userData } = useUser()
+     const {tasks } = useContext(GlobalContext)
+    const [tasksForRender, setTasksForRender] = useState([]);
+    //TODO: VER SI NO ES NECESARIO
+    
 
+    useEffect(() => {
+        setTasksForRender(tasks)
+    }, [tasks]);
     return (
         <div className='tasks'>
             {
@@ -33,26 +40,19 @@ const Tasks = () => {
 
                         <h1 className="title">Mis Tareas</h1>
                         <Grid container spacing={2}>
+                            {tasksForRender.map((task) =>{
+                                return(<Grid item xs={12} sm={6} md={4}>
+                                    <Task title={task.title} description={task.description} id={task.id} />
+    
+                                   </Grid>)
+                            }
+                                
+                                )}
 
 
 
-
-                            <Grid item xs={12} sm={6} md={4}>
-                                <Task />
-
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <Task />
-
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <Task />
-
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <Task />
-
-                            </Grid>
+                          
+                          
                         </Grid>
                     </Container>
 
@@ -61,12 +61,12 @@ const Tasks = () => {
 
 
 
-           
-           </>
-       }
+
+                </>
+            }
         </div>
-       
-       
+
+
     )
 }
 

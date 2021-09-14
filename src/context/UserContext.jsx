@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { useLocation } from 'react-router-dom';
 import Axios from 'axios'
 import Cookies from 'universal-cookie'
@@ -8,9 +8,11 @@ export function UserProvider(props) {
     const cookies = new Cookies();
     //Este useEffect hace que cada vez que cambio de ruta empiezo desde arriba
     const { pathname } = useLocation();
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
+
 
     const [isLogged, setIsLogged] = useState(false);
     const [userData, setUserData] = useState({});
@@ -18,8 +20,7 @@ export function UserProvider(props) {
     const [signInError, setSignInError] = useState(null);
     const [changePasswordError, setChangePasswordError] = useState(null)
 
-    //task States
-    const [createError, setCreateError] = useState(false);
+   
     useEffect(() => {
        
         const user = cookies.get('username')
@@ -63,7 +64,8 @@ export function UserProvider(props) {
             setSignInError(null)
             createCookie(response.data)
         })
-        .catch(err => { setSignInError(err.response.data) })
+        .catch(err => {
+             setSignInError(err.response.data) })
     }
 
 
@@ -102,14 +104,12 @@ export function UserProvider(props) {
         const token = cookies.get('token')
 
         if(!token){
-           
             logOut()
-            
         }
     }
     const newTask = async (task) => {
         sesionTime()
-        setCreateError(false)
+        //setCreateError(false)
         Axios({
             method: 'POST',
             url: 'http://localhost:4000/task/',
@@ -120,7 +120,8 @@ export function UserProvider(props) {
            console.log(response.data)
            
         })
-        .catch(err => { setCreateError(true) })
+        .catch(err => {  })
+        //setCreateError(true)
         
     }
 
@@ -139,7 +140,9 @@ export function UserProvider(props) {
         changePassword,
         setChangePasswordError,
         newTask,
-        createError
+       
+        cookies,
+        sesionTime
 
     }} {...props} />
 }

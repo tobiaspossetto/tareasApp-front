@@ -1,11 +1,12 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
 import { useForm } from 'react-hook-form'
 import{useUser} from '../../../context/UserContext'
+import { GlobalContext } from '../../../context/GlobalContext'
 import '../task.css'
 const Form = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {newTask,createError} = useUser()
-
+  
+    const {createError,newTask } = useContext(GlobalContext)
 const [error, setError] = useState(false)
 useEffect(() => {
     setError(createError)
@@ -17,8 +18,8 @@ useEffect(() => { setError(false)},[])
             console.log(data)
             newTask(data)
                e.target.reset()
-               
-   
+               console.log(e.target)
+            
            }
     return (
 
@@ -35,6 +36,10 @@ useEffect(() => { setError(false)},[])
                       value: true,
                      
                       message: 'Este campo es obligatorio.'
+                    },
+                    minLength: {
+                      value: 3,
+                      message: 'Mínimo 3 carácteres'
                     }
                   })}
                 

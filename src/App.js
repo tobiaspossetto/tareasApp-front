@@ -2,7 +2,7 @@
 import './App.css';
 import Nav from './components/nav/Nav'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { ContextProvider } from './context/GlobalContext'
 import Tasks from './components/tasks/Tasks';
 import { UserProvider } from './context/UserContext'
 import SignUp from './components/auth/SignUp';
@@ -14,6 +14,7 @@ function App() {
 
     <Router>
       <UserProvider className="App">
+      <ContextProvider>
         <Nav />
         <Switch>
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/change-password" exact component={ChangePassword} />
           <Route path="/change-password" exact component={ChangePassword} />
         </Switch>
+      </ContextProvider>
       </UserProvider>
 
     </Router>

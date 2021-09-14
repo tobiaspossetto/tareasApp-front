@@ -12,7 +12,7 @@ import * as AiIcons from 'react-icons/ai'
 import './task.css'
 
   
-const Task = () => {
+const Task = (props) => {
   
     return (
       <Card id='slow-transition' className=' gridTasks ' >
@@ -20,11 +20,10 @@ const Task = () => {
       
         <CardContent>
           <Typography className='cardTitle' gutterBottom variant="h5" component="h2">
-            Tareas
+            {props.title}
           </Typography>
           <Typography className='bodyCard' variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+          {props.description}
           </Typography>
         </CardContent>
      
